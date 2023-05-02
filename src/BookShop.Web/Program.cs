@@ -1,4 +1,4 @@
-using BookShop.Web.Data;
+using BookShop.Infrastracture;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
