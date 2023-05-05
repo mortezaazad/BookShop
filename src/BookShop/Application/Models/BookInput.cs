@@ -5,21 +5,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BookShop.Infrastracture.DataModels
+namespace BookShop.Application.Models
 {
-    public class BookData
+    public class BookCreateModel
     {
-        public int Id { get; set; }
-        [MaxLength(50)]
-        public required string Name { get; set; }
-        [MaxLength(500)]
-        public required string Description { get; set; }
-        [MaxLength(250)]
+        public  string Name { get; set; }
+        public  string Description { get; set; }
         public required string Author { get; set; }
         public int Price { get; set; }
         public int Year { get; set; }
         public int Pages { get; set; }
-        [MaxLength(1_000_000)]
         public byte[]? CoverImage { get; set; }
     }
 }
