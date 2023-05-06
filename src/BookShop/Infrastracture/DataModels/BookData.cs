@@ -7,6 +7,14 @@ using System.Threading.Tasks;
 
 namespace BookShop.Infrastracture.DataModels
 {
+    public enum LanguageType
+    {
+        None=0,
+        English=1,
+        Farsi=2,
+        Russian=3,
+        Greek=4
+    }
     public class BookData
     {
         public int Id { get; set; }
@@ -17,6 +25,7 @@ namespace BookShop.Infrastracture.DataModels
         [MaxLength(250)]
         public required string Author { get; set; }
         public int Price { get; set; }
+        public LanguageType Language { get; set; }
         public int Year { get; set; }
         public int Pages { get; set; }
         [MaxLength(1_000_000)]

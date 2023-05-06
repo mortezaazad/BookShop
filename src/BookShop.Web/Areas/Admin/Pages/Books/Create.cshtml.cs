@@ -1,6 +1,8 @@
 using BookShop.Application;
 using BookShop.Application.Models;
 using BookShop.Infrastracture;
+using BookShop.Infrastracture.DataModels;
+using Mapster;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.ComponentModel.DataAnnotations;
@@ -33,16 +35,21 @@ namespace BookShop.Web.Pages.Books
             Input.CoverImage.CopyToAsync(ms);
             ms.Position = 0;
 
-            _bookService.Create(new Application.Models.BookCreateModel
-            {
-                Author = Input.Author,
-                Name = Input.Name,
-                Description = Input.Description,
-                Year = Input.Year,
-                Pages = Input.Pages,
-                CoverImage = ms.ToArray(),
-                Price = Input.Price,
-            });
+
+            //Manual Mapping
+            //_bookService.Create(new Application.Models.BookCreateModel
+            //{
+            //    Author = Input.Author,
+            //    Name = Input.Name,
+            //    Description = Input.Description,
+            //    Year = Input.Year,
+            //    Pages = Input.Pages,
+            //    CoverImage = ms.ToArray(),
+            //    Price = Input.Price,
+            //});
+
+            //Use Mapster Mapping
+            _bookService.Create(Input.Adapt<BookCreateModel>());
             return RedirectToPage("./Index");
         }
     }
@@ -56,6 +63,7 @@ namespace BookShop.Web.Pages.Books
         public int Year { get; set; }
         [Range(1, 5000, ErrorMessage = "Pages must be between {1} and {2}")]
         public int Pages { get; set; }
+        public LanguageType Language { get; set; }
 
         public IFormFile CoverImage { get; set; }
     }

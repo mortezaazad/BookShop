@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BookShop.Infrastracture.DataModels;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -15,6 +16,7 @@ namespace BookShop.Application.Models
         public int Price { get; set; }
         public int Year { get; set; }
         public int Pages { get; set; }
+        public LanguageType Language { get; set; }
         public byte[]? CoverImage { get; set; }
     }
 }

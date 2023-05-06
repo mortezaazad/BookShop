@@ -1,4 +1,6 @@
-﻿namespace BookShop.Application.Models
+﻿using BookShop.Infrastracture.DataModels;
+
+namespace BookShop.Application.Models
 {
     public class BookDetails
     {
@@ -9,6 +11,7 @@
         public int Price { get; set; }
         public int Year { get; set; }
         public int Pages { get; set; }
+        public string Language { get; set; }
         public byte[]? CoverImage { get; set; }
     }
 }
