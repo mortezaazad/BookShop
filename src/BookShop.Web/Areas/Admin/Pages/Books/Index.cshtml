@@ -15,6 +15,7 @@
         <tr>
             <th>Name</th>
             <th>Price</th>
+            <th>Language</th>
             <th></th>
         </tr>
     </thead>
@@ -24,9 +25,10 @@
             <tr>
                 <th>@item.Name</th>
                 <th>@item.Price</th>
+                <th>@item.Language</th>
                 <th>
-                    <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a>
-                    <a asp-page="./Details" asp-route-bookId="@item.Id" class="btn btn-info">Details</a>
+                    <a asp-page="./Edit" asp-route-bookId="@item.Id">Edit</a>
+                    <a asp-page="./Details" asp-route-bookId="@item.Id">Details</a>
                     <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
                 </th>
             </tr>

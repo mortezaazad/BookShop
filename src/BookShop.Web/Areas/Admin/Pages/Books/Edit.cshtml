@@ -1,0 +1,33 @@
+﻿@page
+@using BookShop.Infrastracture.DataModels;
+@model BookShop.Web.Areas.Admin.Pages.Books.EditModel
+@{
+}
+
+<h2>New Book</h2>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post" enctype="multipart/form-data">
+            <div asp-validation-summary="All" class="text-danger"></div>
+            <div class="mb-3" hidden>
+                <input asp-for="Input.Id" class="form-control" type="text" />
+            </div>
+            <div class="mb-3">
+                <label asp-for="Input.Name" class="col-form-label"></label>
+                <input asp-for="Input.Name" class="form-control" type="text" />
+                <span asp-validation-for="Input.Name" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="Input.Language" class="col-form-label"></label>
+                <select asp-for="Input.Language" asp-items="@Html.GetEnumSelectList<LanguageType>()" class="form-control" type="text">
+                    <option value="0">Select a language</option>
+                </select>
+                <span asp-validation-for="Input.Language" class="text-danger"></span>
+            </div>
+            <button type="submit" class="btn btn-primary">Save</button>
+        </form>
+    </div>
+</div>
+
+
