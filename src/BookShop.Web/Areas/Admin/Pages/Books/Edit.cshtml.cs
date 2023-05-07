@@ -5,6 +5,7 @@ using BookShop.Infrastracture.DataModels;
 using System.ComponentModel.DataAnnotations;
 using BookShop.Application;
 using Mapster;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace BookShop.Web.Areas.Admin.Pages.Books
 {
@@ -17,8 +18,11 @@ namespace BookShop.Web.Areas.Admin.Pages.Books
         }
         [BindProperty]
         public BookEditInput Input { get; set; }
+        public SelectList CategorySelectList{ get; set; }
         public void OnGet(int bookId )
         {
+            var categories=_bookService.GetAllCategories();
+            CategorySelectList = new SelectList(categories, "Id", "Name");
             Input= _bookService.GetEdit(bookId).Adapt<BookEditInput>();
         }
 
@@ -35,5 +39,6 @@ namespace BookShop.Web.Areas.Admin.Pages.Books
         [StringLength(maximumLength:50,MinimumLength =2,ErrorMessage ="Error")]
         public string? Name { get; set; }
         public LanguageType Language { get; set; }
+        public int CategoryId { get; set; }
     }
 }

@@ -37,19 +37,20 @@ namespace BookShop.Web.Pages.Books
 
 
             //Manual Mapping
-            //_bookService.Create(new Application.Models.BookCreateModel
-            //{
-            //    Author = Input.Author,
-            //    Name = Input.Name,
-            //    Description = Input.Description,
-            //    Year = Input.Year,
-            //    Pages = Input.Pages,
-            //    CoverImage = ms.ToArray(),
-            //    Price = Input.Price,
-            //});
+            _bookService.Create(new Application.Models.BookCreateModel
+            {
+                Author = Input.Author,
+                Name = Input.Name,
+                Description = Input.Description,
+                Year = Input.Year,
+                Pages = Input.Pages,
+                CoverImage = ms.ToArray(),
+                Price = Input.Price,
+            });
 
             //Use Mapster Mapping
-            _bookService.Create(Input.Adapt<BookCreateModel>());
+            //_bookService.Create(Input.Adapt<BookCreateModel>());
+
             return RedirectToPage("./Index");
         }
     }

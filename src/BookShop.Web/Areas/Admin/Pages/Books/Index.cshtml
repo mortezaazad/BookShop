@@ -16,6 +16,7 @@
             <th>Name</th>
             <th>Price</th>
             <th>Language</th>
+            <th>Category</th>
             <th></th>
         </tr>
     </thead>
@@ -26,6 +27,7 @@
                 <th>@item.Name</th>
                 <th>@item.Price</th>
                 <th>@item.Language</th>
+                <th>@item.CategoryName</th>
                 <th>
                     <a asp-page="./Edit" asp-route-bookId="@item.Id">Edit</a>
                     <a asp-page="./Details" asp-route-bookId="@item.Id">Details</a>

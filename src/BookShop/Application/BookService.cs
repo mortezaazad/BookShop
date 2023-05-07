@@ -2,6 +2,7 @@
 using BookShop.Infrastracture;
 using BookShop.Infrastracture.DataModels;
 using Mapster;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -73,7 +74,8 @@ namespace BookShop.Application
             //}).ToList();
 
             //Use Mapster Mapping
-            return _db.Books.ProjectToType<BookItem>().ToList();
+            return _db.Books.Include(b=>b.Category)
+                .ProjectToType<BookItem>().ToList();
 
         }
 
@@ -88,7 +90,13 @@ namespace BookShop.Application
             var book = _db.Books.Find(input.Id);
             book.Name=input.Name;
             book.Language=input.Language;
+            book.CategoryId=input.CategoryId;
             _db.SaveChanges();
+        }
+
+        public ICollection<BookCategory> GetAllCategories()
+        {
+            return _db.Categories.ToList();
         }
     }
 }

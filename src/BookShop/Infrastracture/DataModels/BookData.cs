@@ -7,6 +7,13 @@ using System.Threading.Tasks;
 
 namespace BookShop.Infrastracture.DataModels
 {
+    public class BookCategory
+    {
+        public int Id { get; set; }
+        public string Name { get; set; }
+        //public List<BookData> Books { get; set; }
+
+    }
     public enum LanguageType
     {
         None=0,
@@ -18,6 +25,8 @@ namespace BookShop.Infrastracture.DataModels
     public class BookData
     {
         public int Id { get; set; }
+        public int CategoryId { get; set; }
+        public BookCategory Category { get; set; }
         [MaxLength(50)]
         public required string Name { get; set; }
         [MaxLength(500)]

@@ -11,6 +11,7 @@ namespace BookShop.Application.Models
     {
         public int Id { get; init; }
         public string Name { get; init; }
+        public int CategoryId { get; set; }
         public LanguageType Language{ get; init; }
     }
 }
