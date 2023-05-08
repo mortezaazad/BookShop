@@ -6,7 +6,7 @@ using System.Reflection.Metadata;
 
 namespace BookShop.Infrastracture
 {
-    public class ApplicationDbContext : IdentityDbContext
+    public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
