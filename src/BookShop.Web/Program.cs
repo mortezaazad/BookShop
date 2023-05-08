@@ -3,6 +3,7 @@ using BookShop.Infrastracture;
 using BookShop.Infrastracture.DataModels;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Options;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -12,10 +13,34 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(connectionString));
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
-builder.Services.AddDefaultIdentity<ApplicationUser>(options => 
-options.SignIn.RequireConfirmedAccount = true)
+//bedoon estefade az Role ha
+//builder.Services.AddDefaultIdentity<ApplicationUser>(options =>
+//options.SignIn.RequireConfirmedAccount = false)
+//    .AddEntityFrameworkStores<ApplicationDbContext>();
+
+//Estefade az Roleha
+builder.Services.AddIdentity<ApplicationUser,IdentityRole>(options => 
+options.SignIn.RequireConfirmedAccount = false)
+    .AddDefaultUI()
     .AddEntityFrameworkStores<ApplicationDbContext>();
+
+
+///Ejad Policy
+//builder.Services.AddAuthorization(options =>
+//{
+//    options.AddPolicy("RequireAdminRole", policy => policy.RequireRole("admin"));
+//});
+
+
 builder.Services.AddRazorPages();
+
+// Authorization hame zirmajmooe folder user va hamintor ba estefade az policy
+//builder.Services.AddRazorPages()
+//    .AddRazorPagesOptions(options=>
+//    {
+//        options.Conventions.AuthorizeFolder("admin", "/","RequireAdminRole");
+//        options.Conventions.AuthorizeFolder("user", "/");
+//    });
 builder.Services.AddScoped<IBookService, BookService>();
 
 var app = builder.Build();
