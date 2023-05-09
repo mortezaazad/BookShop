@@ -1,0 +1,34 @@
+﻿@page
+@model BookShop.Web.Pages.Shop.IndexModel
+@{
+}
+<h1>Book Details</h1>
+<hr />
+
+<div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+    @foreach (var book in Model.BookList)
+    {
+        <div class="col mb-5">
+            <div class="card" style="height:100% !important">
+                @if (book.CoverImage is not null)
+                {
+                    <img src="@("data:image/jpg;base64,"+Convert.ToBase64String(book.CoverImage))" class="card-img-top" style="max-height:200px" />
+                }
+
+                <div class="card-body p-4">
+                    <div class="text-center">
+                        <h5 class="fw-bolder">
+                            @book.Name
+                        </h5>
+                        @book.Price T
+                    </div>
+                </div>
+                <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                    <div class="text-center">
+                        <a class="btn btn-outline-dark mt-auto" asp-root-id="@book.Id">Add to card</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>

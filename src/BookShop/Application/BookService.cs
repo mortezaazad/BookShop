@@ -89,8 +89,16 @@ namespace BookShop.Application
         {
             var book = _db.Books.Find(input.Id);
             book.Name=input.Name;
+            book.Description=input.Description;
+            book.Author=input.Author;
+            book.Price=input.Price;
             book.Language=input.Language;
             book.CategoryId=input.CategoryId;
+            book.FileName = input.FileName;
+            if (input.CoverImage is not null)
+            {
+                book.CoverImage = input.CoverImage;
+            }
             _db.SaveChanges();
         }
 

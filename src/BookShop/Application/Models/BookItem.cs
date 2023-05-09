@@ -14,5 +14,6 @@ public class BookItem
     public int Price { get; init; }
     public string Language { get; set; }
     public string CategoryName { get; set; }
+    public byte[]? CoverImage { get; set; }
 
 }

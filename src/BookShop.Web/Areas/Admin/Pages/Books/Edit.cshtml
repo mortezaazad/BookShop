@@ -10,8 +10,10 @@
     <div class="col-md-4">
         <form method="post" enctype="multipart/form-data">
             <div asp-validation-summary="All" class="text-danger"></div>
-            <div class="mb-3" hidden>
-                <input asp-for="Input.Id" class="form-control" type="text" />
+            <div class="mb-3">
+                <label asp-for="Input.CoverImageFile" class="col-form-label"></label>
+                <input asp-for="Input.CoverImageFile" class="form-control" />
+                <span asp-validation-for="Input.CoverImageFile " class="text-danger"></span>
             </div>
             <div class="mb-3">
                 <label asp-for="Input.Name" class="col-form-label"></label>
@@ -21,17 +23,43 @@
             <div class="mb-3">
                 <label asp-for="Input.Language" class="col-form-label"></label>
                 <select asp-for="Input.Language" asp-items="@Html.GetEnumSelectList<LanguageType>()" class="form-control" type="text">
-                    <option value="0">Select a language</option>
                 </select>
                 <span asp-validation-for="Input.Language" class="text-danger"></span>
             </div>
             <div class="mb-3">
                 <label asp-for="Input.CategoryId" class="col-form-label"></label>
                 <select asp-for="Input.CategoryId" asp-items="Model.CategorySelectList" class="form-control" type="text">
+                    <option value="">Select a Category</option>
                 </select>
-                <span asp-validation-for="Input.Language" class="text-danger"></span>
+                <span asp-validation-for="Input.CategoryId" class="text-danger"></span>
             </div>
-            <button type="submit" class="btn btn-primary">Save</button>
+            <div class="mb-3">
+                <label asp-for="Input.Description" class="col-form-label"></label>
+                <textarea asp-for="Input.Description" class="form-control"></textarea>
+                <span asp-validation-for="Input.Description" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="Input.Author" class="col-form-label"></label>
+                <input asp-for="Input.Author" class="form-control" />
+                <span asp-validation-for="Input.Author" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="Input.Price" class="col-form-label"></label>
+                <input asp-for="Input.Price" class="form-control" />
+                <span asp-validation-for="Input.Price" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="Input.Pages" class="col-form-label"></label>
+                <input asp-for="Input.Pages" class="form-control" />
+                <span asp-validation-for="Input.Pages" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="Input.Year" class="col-form-label"></label>
+                <input asp-for="Input.Year" class="form-control" />
+                <span asp-validation-for="Input.Year" class="text-danger"></span>
+            </div>
+            <input type="submit" value="Save" class="btn btn-primary" />
+            <a asp-page="./index">Back to List</a>
         </form>
     </div>
 </div>

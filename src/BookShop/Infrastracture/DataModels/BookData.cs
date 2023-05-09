@@ -28,6 +28,8 @@ namespace BookShop.Infrastracture.DataModels
         public int CategoryId { get; set; }
         public BookCategory Category { get; set; }
         [MaxLength(50)]
+        public string FileName { get; set; }
+        [MaxLength(50)]
         public required string Name { get; set; }
         [MaxLength(500)]
         public required string Description { get; set; }
