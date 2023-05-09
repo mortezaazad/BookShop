@@ -3,4 +3,26 @@
 @{
 }
 
-<h1>@Model.UserName, Account</h1>
+<h1>Users</h1>
+<hr />
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <td class="fw-bold">User Name</td>
+            <td class="fw-bold">Full Name</td>
+            <td class="fw-bold">Nationality code</td>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.UserList)
+        {
+            <tr>
+                <td>@item.UserName</td>
+                <td>@item.FirstName @item.LastName </td>
+                <td>@item.NationalityCode </td>
+            </tr>
+        }
+    </tbody>
+
+</table>
