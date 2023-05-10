@@ -8,3 +8,19 @@
     <h1 class="display-4">Welcome</h1>
     <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
 </div>
+
+<div>
+    Top Sells
+</div>
+@*Add View Component without Tag helper*@
+<div>
+    @await Component.InvokeAsync("UserCount") happy customers!
+</div>
+@*Add View Component with Tag helper*@
+<vc:user-count></vc:user-count> happy customers!
+<div>
+    Receent reviews
+</div>
+<div>
+    New books
+</div>

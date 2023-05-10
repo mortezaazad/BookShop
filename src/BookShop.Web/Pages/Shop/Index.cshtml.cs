@@ -10,13 +10,20 @@ namespace BookShop.Web.Pages.Shop
         private readonly IBookService _bookService;
         public IndexModel(IBookService bookService)
         {
-            _bookService= bookService;
+            _bookService = bookService;
         }
         [BindProperty]
         public IList<BookItem> BookList { get; set; }
         public void OnGet()
         {
-            BookList = _bookService.GetAll();
+            BookList = _bookService.GetAll(Term);
+        }
+
+        [BindProperty]
+        public string Term { get; set; }
+        public void OnPost()
+        {
+                BookList = _bookService.GetAll(Term);
         }
     }
 }

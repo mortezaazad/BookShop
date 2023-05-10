@@ -58,8 +58,8 @@ namespace BookShop.Web.Pages.Books
             //Use Mapster Mapping
             var model = Input.Adapt<BookCreateModel>();
             model.CoverImage = ms.ToArray();
-            FileStream fs = ms as FileStream;
-            model.FileName = fs.Name;
+            //FileStream fs = ms as FileStream;
+            //model.FileName = fs.Name;
             _bookService.Create(model);
 
             return RedirectToPage("./Index");

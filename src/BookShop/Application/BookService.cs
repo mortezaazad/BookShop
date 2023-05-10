@@ -3,6 +3,7 @@ using BookShop.Infrastracture;
 using BookShop.Infrastracture.DataModels;
 using Mapster;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -63,8 +64,22 @@ namespace BookShop.Application
             return book.Adapt<BookDetails>();
         }
 
-        public IList<BookItem> GetAll()
+        public IList<BookItem> GetAll(string term="")
         {
+            var q = _db.Books;
+            if (string.IsNullOrEmpty(term))
+            {
+                return q
+                .Include(b => b.Category)
+                .ProjectToType<BookItem>().ToList();
+            }
+            else
+            {
+                return q
+                .Where(b => b.Name.ToLower().Contains(term))
+                .Include(b => b.Category)
+                .ProjectToType<BookItem>().ToList();
+            }
             //Manual Mapping
             //return _db.Books.Select(b => new BookItem
             //{
@@ -74,8 +89,7 @@ namespace BookShop.Application
             //}).ToList();
 
             //Use Mapster Mapping
-            return _db.Books.Include(b=>b.Category)
-                .ProjectToType<BookItem>().ToList();
+            
 
         }
 

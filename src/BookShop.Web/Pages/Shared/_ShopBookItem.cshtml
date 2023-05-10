@@ -1,0 +1,21 @@
+﻿@model BookShop.Application.Models.BookItem
+<div class="card" style="height:100% !important">
+    @if (Model.CoverImage is not null)
+    {
+        <img src="@("data:image/jpg;base64,"+Convert.ToBase64String(Model.CoverImage))" class="card-img-top" style="max-height:200px" />
+    }
+
+    <div class="card-body p-4">
+        <div class="text-center">
+            <h5 class="fw-bolder">
+                @Model.Name
+            </h5>
+            @Model.Price T
+        </div>
+    </div>
+    <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+        <div class="text-center">
+            <a class="btn btn-outline-dark mt-auto" asp-root-id="@Model.Id">Add to card</a>
+        </div>
+    </div>
+</div>
