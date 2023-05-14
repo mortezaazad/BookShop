@@ -9,8 +9,8 @@ namespace BookShop.Infrastracture.DataModels
 {
     public class ApplicationUser: IdentityUser
     {
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
-        public string NationalityCode { get; set; }
+        public string? FirstName { get; set; }
+        public string? LastName { get; set; }
+        public string? NationalityCode { get; set; }
     }
 }

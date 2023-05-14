@@ -27,6 +27,27 @@ namespace BookShop.Application.Models
                 .First(o=>o.Id== orderId);
             return order.Adapt<OrderDetails>();
         }
+
+        public IList<OrderItem> GetAll()
+        {
+            var orderList = _db.Orders
+                .Include(o => o.User)
+                .Include(o => o.Book)
+                //.ThenInclude(o => o.Category)
+                .ProjectToType<OrderItem>().ToList();
+            return orderList;
+        }
+
+        public IList<UserOrderItem> GetAllByUser(string userId)
+        {
+            var orderList = _db.Orders
+                .Include(o => o.User)
+                .Include(o => o.Book)
+                .Where(o=>o.UserId==userId && o.State==OrderState.Confirmed)
+                //.ThenInclude(o => o.Category)
+                .ProjectToType<UserOrderItem>().ToList();
+            return orderList;
+        }
         public int Create(OrderCreateModel model)
         {
             var order = model.Adapt<OrderData>();

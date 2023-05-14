@@ -1,0 +1,19 @@
+﻿@page
+@model BookShop.Web.Areas.User.Pages.Orders.IndexModel
+@{
+}
+
+<h1>My Orders</h1>
+<hr />
+
+<table class="table table-bordered">
+    @foreach (var item in Model.OrderList)
+    {
+        <tr>
+            <td>@item.Book.Name</td>
+            <td>@item.Amount</td>
+            <td>@item.TimeCreated.ToShortDateString()</td>
+        </tr>
+    }
+
+</table>

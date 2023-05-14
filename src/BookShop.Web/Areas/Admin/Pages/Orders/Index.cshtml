@@ -1,0 +1,34 @@
+﻿@page
+@model BookShop.Web.Areas.Admin.Pages.Orders.IndexModel
+@{
+    ViewData["Title"] = "Orders";
+}
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>User</th>
+            <th>Book</th>
+            <th>Amount</th>
+            <th>Date of sell</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.OrderList)
+        {
+            <tr>
+                <th>@item.User.UserName</th>
+                <th>@item.Book.Name</th>
+                <th>@item.Amount</th>
+                <th>@item.TimeCreated.ToShortDateString()</th>
+                <th>
+                    <a asp-page="./Edit" asp-route-bookId="@item.Id">Edit</a>
+                    <a asp-page="./Details" asp-route-bookId="@item.Id">Details</a>
+                    <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
+                </th>
+            </tr>
+        }
+    </tbody>
+
+</table>
