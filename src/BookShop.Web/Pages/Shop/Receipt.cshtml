@@ -13,15 +13,19 @@
     <tbody>
         <tr>
             <td>Order Id</td>
-            <td></td>
+            <td>@Model.Output.Id</td>
         </tr>
         <tr>
             <td>Book</td>
-            <td></td>
+            <td>@Model.Output.Book.Name (@Model.Output.Book.Category.Name)</td>
         </tr>
         <tr>
             <td>Total</td>
-            <td></td>
+            <td>@Model.Output.Amount</td>
+        </tr>
+        <tr>
+            <td>Buyer</td>
+            <td>@Model.Output.User.FirstName @Model.Output.User.LastName</td>
         </tr>
     </tbody>
 </table>
