@@ -1,4 +1,5 @@
 using BookShop.Application;
+using BookShop.Application.Models;
 using BookShop.Infrastracture;
 using BookShop.Infrastracture.DataModels;
 using Microsoft.AspNetCore.Identity;
@@ -42,6 +43,7 @@ builder.Services.AddRazorPages();
 //        options.Conventions.AuthorizeFolder("user", "/");
 //    });
 builder.Services.AddScoped<IBookService, BookService>();
+builder.Services.AddScoped<IOrderService, OrderService>();
 
 var app = builder.Build();
 

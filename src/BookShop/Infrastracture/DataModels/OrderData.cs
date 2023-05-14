@@ -21,7 +21,7 @@ namespace BookShop.Infrastracture.DataModels
     public enum OrderState
     {
         New=0,
-        Confirmes=1,
+        Confirmed=1,
         Canceled=2
     }
 }
