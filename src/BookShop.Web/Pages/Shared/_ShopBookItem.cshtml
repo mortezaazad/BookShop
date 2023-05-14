@@ -4,6 +4,10 @@
     {
         <img src="@("data:image/jpg;base64,"+Convert.ToBase64String(Model.CoverImage))" class="card-img-top" style="max-height:200px" />
     }
+    else
+    {
+        <img src="~/img/no-cover.jpeg" style="max-height:200px"/>
+    }
 
     <div class="card-body p-4">
         <div class="text-center">
@@ -15,7 +19,7 @@
     </div>
     <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
         <div class="text-center">
-            <a class="btn btn-outline-dark mt-auto" asp-root-id="@Model.Id">Add to card</a>
+            <a class="btn btn-outline-dark mt-auto" asp-page="./Review" asp-route-bookId="@Model.Id" >Detail</a>
         </div>
     </div>
 </div>
