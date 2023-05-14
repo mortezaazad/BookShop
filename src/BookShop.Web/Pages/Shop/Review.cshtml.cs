@@ -44,7 +44,7 @@ namespace BookShop.Web.Areas.Admin.Pages.Books
             //Send to Bank/Peyment system!
             _orderService.Confirm(orderId);
 
-
+            TempData[Values.OrderId] = orderId;
 
             //redirect to receipt page
             return RedirectToPage("./receipt");
