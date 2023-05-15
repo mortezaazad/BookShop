@@ -15,6 +15,7 @@ namespace BookShop.Infrastracture
         public DbSet<BookData> Books { get; set; }
         public DbSet<BookCategory> Categories { get; set; }
         public DbSet<OrderData> Orders { get; set; }
+        public DbSet<CommentData> Comments { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder builder)

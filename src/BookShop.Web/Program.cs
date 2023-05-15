@@ -33,6 +33,7 @@ options.SignIn.RequireConfirmedAccount = false)
 //});
 
 builder.Services.AddControllers();
+builder.Services.AddControllersWithViews();
 builder.Services.AddRazorPages();
 
 // Authorization hame zirmajmooe folder user va hamintor ba estefade az policy
@@ -44,6 +45,7 @@ builder.Services.AddRazorPages();
 //    });
 builder.Services.AddScoped<IBookService, BookService>();
 builder.Services.AddScoped<IOrderService, OrderService>();
+builder.Services.AddScoped<ICommentService, CommentService>();
 
 var app = builder.Build();
 
