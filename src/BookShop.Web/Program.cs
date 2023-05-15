@@ -32,7 +32,7 @@ options.SignIn.RequireConfirmedAccount = false)
 //    options.AddPolicy("RequireAdminRole", policy => policy.RequireRole("admin"));
 //});
 
-
+builder.Services.AddControllers();
 builder.Services.AddRazorPages();
 
 // Authorization hame zirmajmooe folder user va hamintor ba estefade az policy
@@ -67,5 +67,5 @@ app.UseRouting();
 app.UseAuthorization();
 
 app.MapRazorPages();
-
+app.MapControllers();
 app.Run();

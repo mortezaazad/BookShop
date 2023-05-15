@@ -13,6 +13,9 @@
             <td>@item.Book.Name</td>
             <td>@item.Amount</td>
             <td>@item.TimeCreated.ToShortDateString()</td>
+            <td>
+                <a asp-controller="file" asp-action="download" asp-route-bookid="@item.BookId" class="btn btn-primary">Download</a>
+            </td>
         </tr>
     }
 

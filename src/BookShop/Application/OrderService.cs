@@ -67,5 +67,15 @@ namespace BookShop.Application.Models
             }
             _db.SaveChanges();
         }
+
+        public OrderDetails GetUserBook(string userId, int bookId)
+        {
+            var order = _db.Orders
+                .Include(o => o.User)
+                .Include(o => o.Book)
+                .ThenInclude(o => o.Category)
+                .FirstOrDefault(o => o.UserId == userId && o.BookId==bookId && o.State==OrderState.Confirmed);
+            return order.Adapt<OrderDetails>();
+        }
     }
 }

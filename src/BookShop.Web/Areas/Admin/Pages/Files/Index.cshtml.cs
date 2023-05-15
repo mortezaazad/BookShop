@@ -22,5 +22,12 @@ namespace BookShop.Web.Areas.Admin.Pages.Files
                 FileList.Add(new FileInfo(file));
             }
         }
+
+        public IActionResult OnGetDownload(string fileName)
+        {
+            var path = Path.Combine(_webHostEnvironment.ContentRootPath, "Files",fileName);
+            var content = System.IO.File.ReadAllBytes(path);
+            return File(content,"application/pdf", fileName);
+        }
     }
 }
