@@ -77,5 +77,18 @@ namespace BookShop.Application.Models
                 .FirstOrDefault(o => o.UserId == userId && o.BookId==bookId && o.State==OrderState.Confirmed);
             return order.Adapt<OrderDetails>();
         }
+
+        public void AddRating(int orderId, int score)
+        {
+            var order = _db.Orders.Find(orderId);
+            order.Rating = new RatingData
+            {
+                BookId = order.BookId,
+                OrderId = orderId,
+                TimeCreated = DateTime.Now,
+                Score = (RatingScore)score
+            };
+            _db.SaveChanges();
+        }
     }
 }

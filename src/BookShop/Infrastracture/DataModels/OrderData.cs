@@ -16,6 +16,9 @@ namespace BookShop.Infrastracture.DataModels
         public DateTime TimeCreated { get; set; }
         public int Amount { get; set; }
         public OrderState State { get; set; }
+
+        //Be ezaye har sefaresh YEK rating vojoud darad.
+        public RatingData Rating { get; set; }
     }
 
     public enum OrderState

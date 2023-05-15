@@ -29,6 +29,28 @@ namespace BookShop.Infrastracture
             //    Year= 2023
             //});
 
+            //Key haye tarkibi marboot be class RatingData
+            builder.Entity<RatingData>().HasKey(r => new
+            {
+                r.OrderId,
+                r.BookId
+            });
+
+
+            //Baraye inke amal multiple Cascade paths etefagh nayofte, bayad rabete ro tarif konim. be in soorat zir.
+            //Har BookData rabete 1 be chand ba Rating dare va har rating ham 1 Book dare
+            //Rooye halat NoAction mizrim. Manzoor ine ke age ketabi hazf shod. ba ratinghash kari nadashte bashim.
+
+            builder.Entity<BookData>()
+                .HasMany(b => b.Ratings)
+                .WithOne(b => b.Book).OnDelete(DeleteBehavior.NoAction);
+
+
+            //Baraye Order ham bayad relationha tarif konim
+            //Har Order yek rating dare va har rating ham yek rabete ba order dare.
+            builder.Entity<OrderData>()
+                .HasOne(o=>o.Rating)
+                .WithOne(o=>o.Order).OnDelete(DeleteBehavior.Cascade);
 
             base.OnModelCreating(builder);
         }

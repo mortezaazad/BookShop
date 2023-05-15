@@ -41,5 +41,8 @@ namespace BookShop.Infrastracture.DataModels
         public int Pages { get; set; }
         [MaxLength(1_000_000)]
         public byte[]? CoverImage { get; set; }
+
+        //Be ezaye har ketab mitoone chandin rating dashte bashe
+        public ICollection<RatingData> Ratings { get; set; }
     }
 }
