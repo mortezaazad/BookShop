@@ -35,7 +35,7 @@ namespace BookShop.Application.Models.Order
     {
         public int Id { get; set; }
         public string UserId { get; set; }
-        public int BookId { get; set; }
+        public int? RatingScore { get; set; }
         public BookData Book { get; set; }
         public DateTime TimeCreated { get; set; }
         public int Amount { get; set; }

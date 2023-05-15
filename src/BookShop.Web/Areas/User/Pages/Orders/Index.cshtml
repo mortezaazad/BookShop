@@ -7,17 +7,33 @@
 <hr />
 
 <table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Book name</th>
+            <th>Amount</th>
+            <th>Time of Sell</th>
+            <th>Score</th>
+            <th>/</th>
+        </tr>
+    </thead>
     @foreach (var item in Model.OrderList)
     {
         <tr>
             <td>@item.Book.Name</td>
             <td>@item.Amount</td>
             <td>@item.TimeCreated.ToShortDateString()</td>
-            <td>
-                <a asp-page="rate" asp-route-orderid="@item.Id" class="btn btn-primary">Rate</a>
+            <td class="text-center">
+                @if (item.RatingScore is null)
+                {
+                    <a asp-page="rate" asp-route-orderid="@item.Id" class="btn btn-primary">Rate</a>
+                }
+                else
+                {
+                    @item.RatingScore
+                }
             </td>
             <td>
-                <a asp-controller="file" asp-action="download" asp-route-bookid="@item.BookId" class="btn btn-primary">Download</a>
+                <a asp-controller="file" asp-action="download" asp-route-bookid="@item.Book.Id" class="btn btn-primary">Download</a>
             </td>
         </tr>
     }

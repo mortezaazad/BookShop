@@ -44,7 +44,11 @@ namespace BookShop.Application
 
         public BookDetails GetDetails(int bookId)
         {
-            var book = _db.Books.Find(bookId);
+            var book = _db.Books.Include(o=>o.Ratings)
+                .ProjectToType<BookDetails>()
+                .First(b=>b.Id==bookId);
+
+            return book;
 
             //Manual Mapping
             //var result = new BookDetails
@@ -61,7 +65,7 @@ namespace BookShop.Application
             //return result;
 
             //Use Mapster Mapping
-            return book.Adapt<BookDetails>();
+
         }
 
         public IList<BookItem> GetAll(string term="")

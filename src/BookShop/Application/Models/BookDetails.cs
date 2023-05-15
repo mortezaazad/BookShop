@@ -14,5 +14,6 @@ namespace BookShop.Application.Models
         public int Pages { get; set; }
         public string Language { get; set; }
         public byte[]? CoverImage { get; set; }
+        public ICollection<RatingData> Ratings { get; set; }
     }
 }

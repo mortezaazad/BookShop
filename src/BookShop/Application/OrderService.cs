@@ -43,8 +43,8 @@ namespace BookShop.Application.Models
             var orderList = _db.Orders
                 .Include(o => o.User)
                 .Include(o => o.Book)
+                .Include(o=>o.Rating)
                 .Where(o=>o.UserId==userId && o.State==OrderState.Confirmed)
-                //.ThenInclude(o => o.Category)
                 .ProjectToType<UserOrderItem>().ToList();
             return orderList;
         }
