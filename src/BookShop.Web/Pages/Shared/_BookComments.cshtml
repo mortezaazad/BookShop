@@ -1,0 +1,9 @@
+﻿@using BookShop.Application.Models.Comment;
+@model IList<CommentOutput>
+
+@foreach(var comment in Model)
+{
+    <p>@comment.Note</p>
+    <p>@comment.UserName (@comment.TimeCreated.ToShortTimeString())</p>
+    <hr />
+}

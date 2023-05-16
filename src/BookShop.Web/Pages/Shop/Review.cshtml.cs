@@ -25,6 +25,7 @@ namespace BookShop.Web.Areas.Admin.Pages.Books
         public void OnGet(int bookId)
         {
             Output= _bookService.GetDetails(bookId);
+            BookId=bookId;
         }
 
         public IActionResult OnPost()

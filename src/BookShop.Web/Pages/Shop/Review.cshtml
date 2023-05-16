@@ -7,15 +7,22 @@
 <hr />
 
 <p>Name: @Model.Output.Name</p>
-<p>Rating: @Model.Output.Ratings.Select(o=>(int)o.Score).Average()</p>
-<p>Language: @Model.Output.Language</p>
-@if (Model.Output.CoverImage is not null)
+@if (Model.Output.Ratings.Count() > 0)
 {
-    <img src="@("data:image/jpg;base64,"+Convert.ToBase64String(Model.Output.CoverImage))" height="500px"/>
+    <p>Rating: @Model.Output.Ratings.Select(o=>(int)o.Score).Average()</p>
 }
 else
 {
-    <img src="~/img/no-cover.jpeg" style="max-height:200px"/>
+    <p>Rating: 0</p>
+}
+<p>Language: @Model.Output.Language</p>
+@if (Model.Output.CoverImage is not null)
+{
+    <img src="@("data:image/jpg;base64,"+Convert.ToBase64String(Model.Output.CoverImage))" height="500px" />
+}
+else
+{
+    <img src="~/img/no-cover.jpeg" style="max-height:200px" />
 }
 
 <p>Price: @Model.Output.Price T</p>
@@ -24,4 +31,39 @@ else
     <input hidden asp-for="BookId" />
     <button class="btn btn-primary">Order Now</button>
 </form>
+<hr />
+
+<div>
+    <textarea id="note" class="col-lg-6">
+    </textarea>
+    <button id="submit-comment" class="btn btn-secondary">Submit</button>
+</div>
+
+
+<div id="comments">
+</div>
+
+@section scripts{
+    <script>
+        $(document).ready(function () {
+            $.get("/api/comments/@Model.BookId", function (commentsHtml) {
+                //console.log(data[0].note);
+                //console.log(data)
+                $("#comments").html(commentsHtml)
+            })
+
+            $("#submit-comment").click(function () {
+                var note = $("#note").val();
+                $.post("/api/comments/@Model.BookId",
+                    { note: note, bookid: @Model.BookId}, function (lastCommentView) {
+                        $("#comments").prepend(lastCommentView);
+                        //prepend: Avalin farzand an id (#comments) darj mikonad
+                        $("#note").val('');
+                    });
+            })
+        });
+
+
+    </script>
+}
 
